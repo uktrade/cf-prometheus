@@ -153,4 +153,3 @@ scrape_configs:
       password: "${redis_password}"
     static_configs:
       - targets: ["${redis_exporter_url}"]
-      
