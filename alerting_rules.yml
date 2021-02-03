@@ -1,0 +1,42 @@
+groups:
+
+- name: services
+  rules:
+  - alert: High Disk Utilization
+    expr: avg_over_time(dbsize_byte[30m]) /  on(organisation, space, service, guid) ( avg_over_time(free_storage_space_bytes[30m]) + on(organisation, space, service, guid) avg_over_time(dbsize_byte[30m])) * 100 > 80
+    for: 1m
+    labels:
+      severity: p1
+    annotations:
+      summary: High Disk Utilization
+      description: "{{ $labels.service }} is currently utilizing {{ $value }}% of disk"
+
+  - alert: High CPU Utilization
+    expr: cpu_percent{service=~".*"} > 70
+    for: 1m
+    labels:
+      severity: p1
+    annotations:
+      summary: High CPU Utilization
+      description: "{{ $labels.service }} is currently utilizing {{ $value }}% of cpu"
+      
+# Disable apps related rules 
+# - name: apps
+#   rules:
+#   - alert: High Disk Utilization
+#     expr: disk_utilization > 80
+#     for: 1m
+#     labels:
+#       severity: p1
+#     annotations:
+#       summary: High Disk Utilization
+#       description: "{{ $labels.app }} instance {{ $label.exported_instance }} is currently utilizing {{ $value }}% of disk"
+
+#   - alert: High CPU Utilization
+#     expr: cpu_percent{app=~".*"} > 70
+#     for: 1m
+#     labels:
+#       severity: p1
+#     annotations:
+#       summary: High CPU Utilization (app)
+#       description: "{{ $labels.app }} instance {{ $label.exported_instance }} is currently utilizing {{ $value }}% of cpu"

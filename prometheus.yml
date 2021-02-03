@@ -4,22 +4,15 @@ global:
   # scrape_timeout is set to the global default (10s).
 
 # Alertmanager configuration
-# alerting:
-#   alertmanagers:
-#   - static_configs:
-#     - targets:
-#       - alert1.internal.uktrade.io:9093
-#       - alert2.internal.uktrade.io:9093
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - dit-alertmanager.apps.internal:8080
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
-# rule_files:
-#   - "autoscaling_alerts.yml"
-
-# temporarily disable whilst figuring out why the es adaptor causes errors
-#remote_write:
-#  - url: "http://es_adaptor:8080/write"
-#remote_read:
-#  - url: "http://es_adaptor:8080/read"
+rule_files:
+  - "alerting_rules.yml"
 
 scrape_configs:
   # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
