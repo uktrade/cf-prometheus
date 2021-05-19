@@ -8,7 +8,7 @@ alerting:
   alertmanagers:
   - static_configs:
     - targets:
-      - dit-alertmanager.apps.internal:8080
+      - ${target_alert_manager}
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
