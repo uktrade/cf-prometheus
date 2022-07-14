@@ -113,10 +113,10 @@ scrape_configs:
     static_configs:
       - targets: ['${data_workspace_exporter_dev_url}']
 
-  - job_name: 'data-hub-api-redis-queue-exporter'
+  - job_name: 'data-hub-api-redis-queue-exporter-dev'
     scheme: 'https'
     static_configs:
-      - targets: ['${data_hub_api_redis_queue_exporter}']
+      - targets: ['${data_hub_api_redis_queue_exporter_dev}']
 
   - job_name: 'statsd-exporter-staging'
     scheme: 'https'
