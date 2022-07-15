@@ -124,7 +124,7 @@ scrape_configs:
       - targets: ['${data_hub_api_redis_queue_exporter_staging}']
 
   - job_name: 'data-hub-api-redis-queue-exporter-uat'
-    scheme: 'https'
+    scheme: 'http'
     static_configs:
       - targets: ['${data_hub_api_redis_queue_exporter_uat}']
 
