@@ -114,22 +114,22 @@ scrape_configs:
       - targets: ['${data_workspace_exporter_dev_url}']
 
   - job_name: 'data-hub-api-redis-queue-exporter-dev'
-    scheme: 'https'
+    scheme: 'http'
     static_configs:
       - targets: ['${data_hub_api_redis_queue_exporter_dev}']
 
   - job_name: 'data-hub-api-redis-queue-exporter-staging'
-    scheme: 'https'
+    scheme: 'http'
     static_configs:
       - targets: ['${data_hub_api_redis_queue_exporter_staging}']
 
   - job_name: 'data-hub-api-redis-queue-exporter-uat'
-    scheme: 'https'
+    scheme: 'http'
     static_configs:
       - targets: ['${data_hub_api_redis_queue_exporter_uat}']
 
   - job_name: 'data-hub-api-redis-queue-exporter'
-    scheme: 'https'
+    scheme: 'http'
     static_configs:
       - targets: ['${data_hub_api_redis_queue_exporter}']
 
